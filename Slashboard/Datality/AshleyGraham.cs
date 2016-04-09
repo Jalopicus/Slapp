@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Datality {
-    public class AshleyGraham : DbContext {
+    public sealed class AshleyGraham : DbContext {
         // Your context has been configured to use a 'AshleyGraham' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
         // 'Datality.AshleyGraham' database on your LocalDb instance. 
@@ -15,26 +15,33 @@ namespace Datality {
         // If you wish to target a different database and/or database provider, modify the 'AshleyGraham' 
         // connection string in the application configuration file.
         public AshleyGraham(): base("name=AshleyGraham") {
-            var dbug = this.Configuration;
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AshleyGraham>());
+            Pros = Set<Pro>();
+            Raws = Set<Raw>();
+            Blends = Set<Blend>();
+            Brands = Set<Brand>();
+            Toxicities = Set<Toxicity>();
+            SpecSets = Set<SpecSet>();
+            Safeties = Set<Safety>();
+            //    var dbug = this.Configuration;
+                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AshleyGraham>());
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+      //  protected override void OnModelCreating(DbModelBuilder modelBuilder) {
 //            base.OnModelCreating(modelBuilder);
 //            modelBuilder.Entity<Blend>().Map(m => {
  //               m.MapInheritedProperties();
   //              m.ToTable("Blends");
    //         });
-        }
+     //   }
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public virtual DbSet<Pro> Pros { get; set; }
-        public virtual DbSet<Raw> Raws { get; set; }
-        public virtual DbSet<Blend> Blends { get; set; }
-        public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Toxicity> Toxicities { get; set; }
-        public virtual DbSet<SpecSet> SpecSets { get; set; }
-        public virtual DbSet<Safety> Safeties { get; set; }
+        internal DbSet<Pro> Pros { get; set; }
+        internal DbSet<Raw> Raws { get; set; }
+        internal DbSet<Blend> Blends { get; set; }
+        internal DbSet<Brand> Brands { get; set; }
+        internal DbSet<Toxicity> Toxicities { get; set; }
+        internal DbSet<SpecSet> SpecSets { get; set; }
+        internal DbSet<Safety> Safeties { get; set; }
     }
     //public class MyEntity
     //{
@@ -44,7 +51,7 @@ namespace Datality {
     /// <summary>
     /// Tables/sets will inherit this base class
     /// </summary>
-    [NotMapped]
+  
     public abstract class Bass : INotifyPropertyChanged {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -59,46 +66,48 @@ namespace Datality {
     /// <summary>
     /// Chemical base
     /// </summary>
-    //[NotMapped]
-    //public abstract class Chemical : Bass {
-    //    public string Name { get { return _name; } set { _name = value; OnPc("Name"); } }
-    //    private string _name;
-    //    public virtual Reggo Reg { get; set; }
-    //    public virtual ICollection<Toxicity> Toxicities { get; set; }
-    //}
+  
+    public abstract class Chemical : Bass {
+   //     protected Chemical() {
+   //         this.Toxicities = new HashSet<Toxicity>();
+   //     }
+       // public string Name { get { return _name; } set { _name = value; OnPc("Name"); } }
+     //   private string _name;
+     public string Name { get; set; }
+        public virtual Reggo Reg { get; set; }
+        public virtual ICollection<Toxicity> Toxicities { get; set; }
+    }
     /// <summary>
     /// Raw material
     /// </summary>
     public class Raw : Bass {
+
         // public string StockConcentration { get { return _stockConcentration; } set { _stockConcentration = value; OnPc("StockConcentration"); } }
         // private string _stockConcentration = null;
         // public string Cas { get { return _cas; } set { _cas = value; OnPc("Cas"); } }
         // private string _cas = null;
-        public string Name { get { return _name; } set { _name = value; OnPc("Name"); } }
-        private string _name;
+        //   public string Name { get { return _name; } set { _name = value; OnPc("Name"); } }
+        //  private string _name;
+        public string Name { get; set; }
         public virtual Reggo Reg { get; set; }
-        public virtual ICollection<Toxicity> Toxicities { get; set; }
+        public virtual ICollection<Toxicity> Toxicities { get; set; } = new HashSet<Toxicity>();
         public string StockConcentration { get; set; }
         public string Cas { get; set; }
     }
     /// <summary>
     /// Combination of raw materials
     /// </summary>
-    public class Blend : Bass {
-        public string Name { get { return _name; } set { _name = value; OnPc("Name"); } }
-        private string _name;
-        public virtual Reggo Reg { get; set; }
-        public virtual ICollection<Toxicity> Toxicities { get; set; }
-        public virtual SpecSet SpecSet { get; set; }
-        public virtual Safety Safety { get; set; }
-        public virtual Transport Transport { get; set; }
-        public virtual ICollection<Pro> Products { get; set; }
-        public virtual ICollection<Formulino> Formulinos { get; set; }
+    public class Blend : Chemical {
+        public SpecSet SpecSet { get; set; }
+     //   public virtual Safety Safety { get; set; }
+   //     public virtual Transport Transport { get; set; }
+        public virtual ICollection<Pro> Products { get; set; } = new HashSet<Pro>();
+        public virtual ICollection<Formulino> Formulinos { get; set; } = new HashSet<Formulino>();
     }
     /// <summary>
     /// Aliasing and branding of a blend
     /// </summary>
-    public class Pro : Blend {
+    public class Pro : Bass {
         public string Name { get; set; }
         public string Class { get { return _class; } set { _class = value; OnPc("Class"); } }
         private string _class;
@@ -124,7 +133,7 @@ namespace Datality {
     /// <summary>
     /// Toxicity entities
     /// </summary>
-    public abstract class Toxicity : Bass {
+    public class Toxicity : Bass {
         public int Type { get; set; }
         public string Test { get { return _test; } set { _test = value; OnPc("Test"); } }
         private string _test;
@@ -139,9 +148,9 @@ namespace Datality {
         public string Name { get; set; }
         public string FullName { get; set; }
         public StreetAddress StreetAddress { get; set; }
-        public UrlAttribute WebSite { get; set; }
-        public PhoneAttribute Phone { get; set; }
-        public EmailAddressAttribute Email { get; set; }
+        public string WebSite { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
         public string Contact { get; set; }
     }
     #endregion
@@ -160,12 +169,12 @@ namespace Datality {
         private bool _kosher = false;
         public bool Fda { get { return _fda; } set { _fda = value; OnPc("Fda"); } }
         private bool _fda = false;
-        public Sara313 Sara313 { get; set; }
         public Sara Sara { get; set; }
-        public virtual LegacyRatings LegacyRatings { get; set; }
+        public LegacyRatings LegacyRatings { get; set; }
     }
     #endregion
     #region Bums
+
     public class Transport : Bass {
         public bool Hazardous { get; set; } = true;
         public string Un { get; set; }
@@ -176,27 +185,29 @@ namespace Datality {
         public string PackingGroup { get; set; }
         public string Type { get; set; } //(air, dot, etc)
     }
-    [NotMapped]
+    [ComplexType]
     public class Sara {
-        bool Acute { get; set; } = false;
-        bool Chronic { get; set; } = false;
-        bool Fire { get; set; } = false;
-        bool Pressure { get; set; } = false;
-        bool Reactivity { get; set; } = false;
+        public bool Acute { get; set; } = false;
+        public bool Chronic { get; set; } = false;
+        public bool Fire { get; set; } = false;
+        public bool Pressure { get; set; } = false;
+        public bool Reactivity { get; set; } = false;
+        public Sara313 Sara313 { get; set; }
     }
-    [NotMapped]
+ 
     public class LegacyRatings {
         public LegacyRating Hmis { get; set; } = new LegacyRating();
         public LegacyRating Nfpa { get; set; } = new LegacyRating();
         public LegacyRating Whims { get; set; } = new LegacyRating();
     }
-    [NotMapped]
+    [ComplexType]
     public class LegacyRating {
         public int H { get; set; } = 0;
         public int F { get; set; } = 0;
         public int R { get; set; } = 0;
         public string Sp { get; set; } = null;
     }
+
     public class Formulino : Bass {
         public float Low { get; set; } = 0;
         public float High { get; set; } = 100;
@@ -204,7 +215,8 @@ namespace Datality {
         public string Range { get; set; } = "0-100";
         public virtual Raw Raw  { get; set; }
     }
-    public struct StreetAddress {
+    [ComplexType]
+    public class StreetAddress {
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
@@ -212,7 +224,9 @@ namespace Datality {
         public string State { get; set; }
         public string Zip { get; set; }
     }
-    public struct Sara313 {
+    [ComplexType]
+    public class Sara313 {
+        private bool Listed { get; set; } = false;
         public long Tpq { get; set; }
         public long Rq { get; set; }
     }

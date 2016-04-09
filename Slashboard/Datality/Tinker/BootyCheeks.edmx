@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BootyCheeks.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Basses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Blend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Safety_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WebSite" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Chemical">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Formulino">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Low" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="High" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Actual" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Range" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Blend_Id" Type="int" Nullable="false" />
+          <Property Name="Raw_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Pro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Class" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IssueDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RevisionDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Version" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Brand_Id" Type="int" Nullable="false" />
+          <Property Name="Blend_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Raw">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="StockConcentration" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cas" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Safety">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Basses_Toxicity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Test" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Result" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Chemical_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blend_inherits_Chemical">
+          <End Role="Basses_Chemical" Type="Self.Basses_Chemical" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Blend" Type="Self.Basses_Blend" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Chemical">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Blend">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlendFormulino">
+          <End Role="Basses_Blend" Type="Self.Basses_Blend" Multiplicity="1" />
+          <End Role="Basses_Formulino" Type="Self.Basses_Formulino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Blend">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Formulino">
+              <PropertyRef Name="Blend_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlendPro">
+          <End Role="Basses_Blend" Type="Self.Basses_Blend" Multiplicity="1" />
+          <End Role="Basses_Pro" Type="Self.Basses_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Blend">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Pro">
+              <PropertyRef Name="Blend_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlendSafety">
+          <End Role="Basses_Safety" Type="Self.Basses_Safety" Multiplicity="1" />
+          <End Role="Basses_Blend" Type="Self.Basses_Blend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Safety">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Blend">
+              <PropertyRef Name="Safety_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Brand" Type="Self.Basses_Brand" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Brand">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandPro">
+          <End Role="Basses_Brand" Type="Self.Basses_Brand" Multiplicity="1" />
+          <End Role="Basses_Pro" Type="Self.Basses_Pro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Pro">
+              <PropertyRef Name="Brand_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chemical_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Chemical" Type="Self.Basses_Chemical" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Chemical">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChemicalToxicity">
+          <End Role="Basses_Chemical" Type="Self.Basses_Chemical" Multiplicity="1" />
+          <End Role="Basses_Toxicity" Type="Self.Basses_Toxicity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Chemical">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Toxicity">
+              <PropertyRef Name="Chemical_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulino_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Formulino" Type="Self.Basses_Formulino" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Formulino">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Pro" Type="Self.Basses_Pro" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Pro">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Raw_inherits_Chemical">
+          <End Role="Basses_Chemical" Type="Self.Basses_Chemical" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Raw" Type="Self.Basses_Raw" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Chemical">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Raw">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawFormulino">
+          <End Role="Basses_Raw" Type="Self.Basses_Raw" Multiplicity="1" />
+          <End Role="Basses_Formulino" Type="Self.Basses_Formulino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basses_Raw">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Formulino">
+              <PropertyRef Name="Raw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Safety_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Safety" Type="Self.Basses_Safety" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Safety">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Toxicity_inherits_Bass">
+          <End Role="Basses" Type="Self.Basses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Basses_Toxicity" Type="Self.Basses_Toxicity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Basses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Basses_Toxicity">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BootyCheeksStoreContainer">
+          <EntitySet Name="Basses" EntityType="Self.Basses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Blend" EntityType="Self.Basses_Blend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Brand" EntityType="Self.Basses_Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Chemical" EntityType="Self.Basses_Chemical" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Formulino" EntityType="Self.Basses_Formulino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Pro" EntityType="Self.Basses_Pro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Raw" EntityType="Self.Basses_Raw" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Safety" EntityType="Self.Basses_Safety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basses_Toxicity" EntityType="Self.Basses_Toxicity" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blend_inherits_Chemical" Association="Self.FK_Blend_inherits_Chemical">
+            <End Role="Basses_Chemical" EntitySet="Basses_Chemical" />
+            <End Role="Basses_Blend" EntitySet="Basses_Blend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlendFormulino" Association="Self.FK_BlendFormulino">
+            <End Role="Basses_Blend" EntitySet="Basses_Blend" />
+            <End Role="Basses_Formulino" EntitySet="Basses_Formulino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlendPro" Association="Self.FK_BlendPro">
+            <End Role="Basses_Blend" EntitySet="Basses_Blend" />
+            <End Role="Basses_Pro" EntitySet="Basses_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlendSafety" Association="Self.FK_BlendSafety">
+            <End Role="Basses_Safety" EntitySet="Basses_Safety" />
+            <End Role="Basses_Blend" EntitySet="Basses_Blend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_inherits_Bass" Association="Self.FK_Brand_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Brand" EntitySet="Basses_Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandPro" Association="Self.FK_BrandPro">
+            <End Role="Basses_Brand" EntitySet="Basses_Brand" />
+            <End Role="Basses_Pro" EntitySet="Basses_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chemical_inherits_Bass" Association="Self.FK_Chemical_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Chemical" EntitySet="Basses_Chemical" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChemicalToxicity" Association="Self.FK_ChemicalToxicity">
+            <End Role="Basses_Chemical" EntitySet="Basses_Chemical" />
+            <End Role="Basses_Toxicity" EntitySet="Basses_Toxicity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulino_inherits_Bass" Association="Self.FK_Formulino_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Formulino" EntitySet="Basses_Formulino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_inherits_Bass" Association="Self.FK_Pro_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Pro" EntitySet="Basses_Pro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Raw_inherits_Chemical" Association="Self.FK_Raw_inherits_Chemical">
+            <End Role="Basses_Chemical" EntitySet="Basses_Chemical" />
+            <End Role="Basses_Raw" EntitySet="Basses_Raw" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawFormulino" Association="Self.FK_RawFormulino">
+            <End Role="Basses_Raw" EntitySet="Basses_Raw" />
+            <End Role="Basses_Formulino" EntitySet="Basses_Formulino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Safety_inherits_Bass" Association="Self.FK_Safety_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Safety" EntitySet="Basses_Safety" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toxicity_inherits_Bass" Association="Self.FK_Toxicity_inherits_Bass">
+            <End Role="Basses" EntitySet="Basses" />
+            <End Role="Basses_Toxicity" EntitySet="Basses_Toxicity" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BootyCheeks" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AshleyGraham" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Basses" EntityType="BootyCheeks.Bass" cg:GetterAccess="Internal" />
+          <AssociationSet Name="BlendFormulino" Association="BootyCheeks.BlendFormulino">
+            <End Role="Blend" EntitySet="Basses" />
+            <End Role="Formulinos" EntitySet="Basses" />
+          </AssociationSet>
+          <AssociationSet Name="RawFormulino" Association="BootyCheeks.RawFormulino">
+            <End Role="Raw" EntitySet="Basses" />
+            <End Role="Formulino" EntitySet="Basses" />
+          </AssociationSet>
+          <AssociationSet Name="BrandPro" Association="BootyCheeks.BrandPro">
+            <End Role="Brand" EntitySet="Basses" />
+            <End Role="Pro" EntitySet="Basses" />
+          </AssociationSet>
+          <AssociationSet Name="BlendPro" Association="BootyCheeks.BlendPro">
+            <End Role="Blend" EntitySet="Basses" />
+            <End Role="Pro" EntitySet="Basses" />
+          </AssociationSet>
+          <AssociationSet Name="BlendSafety" Association="BootyCheeks.BlendSafety">
+            <End Role="Blend" EntitySet="Basses" />
+            <End Role="Safety" EntitySet="Basses" />
+          </AssociationSet>
+          <AssociationSet Name="ChemicalToxicity" Association="BootyCheeks.ChemicalToxicity">
+            <End Role="Chemical" EntitySet="Basses" />
+            <End Role="Toxicity" EntitySet="Basses" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Bass" Abstract="true" cg:TypeAccess="Public">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Note" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Chemical" BaseType="BootyCheeks.Bass" Abstract="true">
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Toxicities" Relationship="BootyCheeks.ChemicalToxicity" FromRole="Chemical" ToRole="Toxicity" />
+          <Property Name="Reggo" Type="BootyCheeks.Reggo" Nullable="false" />
+          <Property Name="Transport" Type="BootyCheeks.Transport" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Raw" BaseType="BootyCheeks.Chemical">
+          <Property Name="StockConcentration" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cas" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Formulinos" Relationship="BootyCheeks.RawFormulino" FromRole="Raw" ToRole="Formulino" />
+        </EntityType>
+        <EntityType Name="Blend" BaseType="BootyCheeks.Chemical">
+          <Property Name="SpecSet" Type="BootyCheeks.SpecSet" Nullable="false" />
+          <NavigationProperty Name="Pros" Relationship="BootyCheeks.BlendPro" FromRole="Blend" ToRole="Pro" />
+          <NavigationProperty Name="Formulinos" Relationship="BootyCheeks.BlendFormulino" FromRole="Blend" ToRole="Formulinos" />
+          <NavigationProperty Name="Safety" Relationship="BootyCheeks.BlendSafety" FromRole="Blend" ToRole="Safety" />
+        </EntityType>
+        <ComplexType Name="SpecSet" />
+        <ComplexType Name="StreetAddress" />
+        <ComplexType Name="Sara" >
+          <Property Type="Int32" Name="Rq" Nullable="false" />
+          <Property Type="Int32" Name="Tpq" Nullable="false" />
+          <Property Type="Boolean" Name="Sara313" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Transport" />
+        <EntityType Name="Toxicity" BaseType="BootyCheeks.Bass">
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Test" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Result" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Chemical" Relationship="BootyCheeks.ChemicalToxicity" FromRole="Toxicity" ToRole="Chemical" />
+        </EntityType>
+        <EntityType Name="Brand" BaseType="BootyCheeks.Bass">
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="WebSite" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="StreetAddress" Type="BootyCheeks.StreetAddress" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Pros" Relationship="BootyCheeks.BrandPro" FromRole="Brand" ToRole="Pro" />
+        </EntityType>
+        <ComplexType Name="Reggo" >
+          <Property Type="BootyCheeks.LegacyRating" Name="Hmis" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Pro" BaseType="BootyCheeks.Bass">
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IssueDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RevisionDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Brand" Relationship="BootyCheeks.BrandPro" FromRole="Pro" ToRole="Brand" />
+          <NavigationProperty Name="Blend" Relationship="BootyCheeks.BlendPro" FromRole="Pro" ToRole="Blend" />
+        </EntityType>
+        <EntityType Name="Safety" BaseType="BootyCheeks.Bass">
+          <NavigationProperty Name="Blend" Relationship="BootyCheeks.BlendSafety" FromRole="Safety" ToRole="Blend" />
+        </EntityType>
+        <ComplexType Name="LegacyRating" />
+        <EntityType Name="Formulino" BaseType="BootyCheeks.Bass">
+          <Property Name="Low" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="High" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Actual" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Range" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Raw" Relationship="BootyCheeks.RawFormulino" FromRole="Formulino" ToRole="Raw" />
+          <NavigationProperty Name="Blend" Relationship="BootyCheeks.BlendFormulino" FromRole="Formulinos" ToRole="Blend" />
+        </EntityType>
+        <Association Name="BlendFormulino">
+          <End Type="BootyCheeks.Blend" Role="Blend" Multiplicity="1" />
+          <End Type="BootyCheeks.Formulino" Role="Formulinos" Multiplicity="*" />
+        </Association>
+        <Association Name="RawFormulino">
+          <End Type="BootyCheeks.Raw" Role="Raw" Multiplicity="1" />
+          <End Type="BootyCheeks.Formulino" Role="Formulino" Multiplicity="*" />
+        </Association>
+        <Association Name="BrandPro">
+          <End Type="BootyCheeks.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="BootyCheeks.Pro" Role="Pro" Multiplicity="*" />
+        </Association>
+        <Association Name="BlendPro">
+          <End Type="BootyCheeks.Blend" Role="Blend" Multiplicity="1" />
+          <End Type="BootyCheeks.Pro" Role="Pro" Multiplicity="*" />
+        </Association>
+        <Association Name="BlendSafety">
+          <End Type="BootyCheeks.Blend" Role="Blend" Multiplicity="1" />
+          <End Type="BootyCheeks.Safety" Role="Safety" Multiplicity="1" />
+        </Association>
+        <Association Name="ChemicalToxicity">
+          <End Type="BootyCheeks.Chemical" Role="Chemical" Multiplicity="1" />
+          <End Type="BootyCheeks.Toxicity" Role="Toxicity" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BootyCheeksStoreContainer" CdmEntityContainer="AshleyGraham">
+    <EntitySetMapping Name="Basses">
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Bass)">
+        <MappingFragment StoreEntitySet="Basses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Chemical)">
+        <MappingFragment StoreEntitySet="Basses_Chemical">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Blend)">
+        <MappingFragment StoreEntitySet="Basses_Blend">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Formulino)">
+        <MappingFragment StoreEntitySet="Basses_Formulino">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Low" ColumnName="Low" />
+          <ScalarProperty Name="High" ColumnName="High" />
+          <ScalarProperty Name="Actual" ColumnName="Actual" />
+          <ScalarProperty Name="Range" ColumnName="Range" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Raw)">
+        <MappingFragment StoreEntitySet="Basses_Raw">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StockConcentration" ColumnName="StockConcentration" />
+          <ScalarProperty Name="Cas" ColumnName="Cas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Brand)">
+        <MappingFragment StoreEntitySet="Basses_Brand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Pro)">
+        <MappingFragment StoreEntitySet="Basses_Pro">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="RevisionDate" ColumnName="RevisionDate" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Safety)">
+        <MappingFragment StoreEntitySet="Basses_Safety">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(BootyCheeks.Toxicity)">
+        <MappingFragment StoreEntitySet="Basses_Toxicity">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Test" ColumnName="Test" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BlendFormulino" TypeName="BootyCheeks.BlendFormulino" StoreEntitySet="Basses_Formulino">
+      <EndProperty Name="Blend">
+        <ScalarProperty Name="Id" ColumnName="Blend_Id" />
+      </EndProperty>
+      <EndProperty Name="Formulinos">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RawFormulino" TypeName="BootyCheeks.RawFormulino" StoreEntitySet="Basses_Formulino">
+      <EndProperty Name="Raw">
+        <ScalarProperty Name="Id" ColumnName="Raw_Id" />
+      </EndProperty>
+      <EndProperty Name="Formulino">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BrandPro" TypeName="BootyCheeks.BrandPro" StoreEntitySet="Basses_Pro">
+      <EndProperty Name="Brand">
+        <ScalarProperty Name="Id" ColumnName="Brand_Id" />
+      </EndProperty>
+      <EndProperty Name="Pro">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BlendPro" TypeName="BootyCheeks.BlendPro" StoreEntitySet="Basses_Pro">
+      <EndProperty Name="Blend">
+        <ScalarProperty Name="Id" ColumnName="Blend_Id" />
+      </EndProperty>
+      <EndProperty Name="Pro">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BlendSafety" TypeName="BootyCheeks.BlendSafety" StoreEntitySet="Basses_Blend">
+      <EndProperty Name="Safety">
+        <ScalarProperty Name="Id" ColumnName="Safety_Id" />
+      </EndProperty>
+      <EndProperty Name="Blend">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ChemicalToxicity" TypeName="BootyCheeks.ChemicalToxicity" StoreEntitySet="Basses_Toxicity">
+      <EndProperty Name="Chemical">
+        <ScalarProperty Name="Id" ColumnName="Chemical_Id" />
+      </EndProperty>
+      <EndProperty Name="Toxicity">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

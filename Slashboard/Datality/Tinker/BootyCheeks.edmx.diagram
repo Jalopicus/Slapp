@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a6fcaf71ccc4f7094ebf5a036b90f4f" Name="Diagram1" ZoomLevel="44" >
+        <EntityTypeShape EntityType="BootyCheeks.Bass" Width="1.5" PointX="5.875" PointY="0.75" />
+        <EntityTypeShape EntityType="BootyCheeks.Chemical" Width="1.5" PointX="4.75" PointY="2.875" />
+        <InheritanceConnector EntityType="BootyCheeks.Chemical" />
+        <EntityTypeShape EntityType="BootyCheeks.Raw" Width="1.5" PointX="5.875" PointY="5.5" />
+        <InheritanceConnector EntityType="BootyCheeks.Raw" />
+        <EntityTypeShape EntityType="BootyCheeks.Blend" Width="1.5" PointX="8.125" PointY="5.5" />
+        <InheritanceConnector EntityType="BootyCheeks.Blend" />
+        <InheritanceConnector EntityType="BootyCheeks.Blend" />
+        <EntityTypeShape EntityType="BootyCheeks.Toxicity" Width="1.5" PointX="3.25" PointY="5.5" />
+        <InheritanceConnector EntityType="BootyCheeks.Toxicity" />
+        <EntityTypeShape EntityType="BootyCheeks.Brand" Width="1.5" PointX="11.125" PointY="2.875" />
+        <InheritanceConnector EntityType="BootyCheeks.Brand" />
+        <EntityTypeShape EntityType="BootyCheeks.Pro" Width="1.5" PointX="9.5" PointY="8.125" />
+        <InheritanceConnector EntityType="BootyCheeks.Pro" />
+        <EntityTypeShape EntityType="BootyCheeks.Safety" Width="1.5" PointX="4" PointY="8.125" />
+        <InheritanceConnector EntityType="BootyCheeks.Safety" />
+        <EntityTypeShape EntityType="BootyCheeks.Formulino" Width="1.5" PointX="7" PointY="8.125" />
+        <InheritanceConnector EntityType="BootyCheeks.Formulino" />
+        <AssociationConnector Association="BootyCheeks.BlendFormulino" />
+        <AssociationConnector Association="BootyCheeks.RawFormulino" />
+        <AssociationConnector Association="BootyCheeks.BrandPro" />
+        <AssociationConnector Association="BootyCheeks.BlendPro" />
+        <AssociationConnector Association="BootyCheeks.BlendSafety" />
+        <AssociationConnector Association="BootyCheeks.ChemicalToxicity" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

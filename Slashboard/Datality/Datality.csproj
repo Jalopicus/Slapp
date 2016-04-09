@@ -54,6 +54,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AshleyGraham.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Tinker\Bass.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Blend.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\BootyCheeks.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootyCheeks.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\BootyCheeks.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\BootyCheeks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BootyCheeks.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Brand.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Chemical.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Formulino.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\LegacyRating.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Pro.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Raw.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Reggo.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Safety.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Sara.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\SpecSet.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\StreetAddress.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tinker\Butt.cs">
       <DependentUpon>codeGen.tt</DependentUpon>
     </Compile>
@@ -85,12 +140,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>tinker.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Tinker\Toxicity.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tinker\Transport.cs">
+      <DependentUpon>BootyCheeks.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AshleyGraham\" />
     <Folder Include="Minions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Tinker\BootyCheeks.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BootyCheeks.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Tinker\BootyCheeks.edmx.diagram">
+      <DependentUpon>BootyCheeks.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="Tinker\tinker.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -101,6 +170,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Tinker\BootyCheeks.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BootyCheeks.Context.cs</LastGenOutput>
+      <DependentUpon>BootyCheeks.edmx</DependentUpon>
+    </Content>
+    <Content Include="Tinker\BootyCheeks.edmx.sql" />
+    <Content Include="Tinker\BootyCheeks.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BootyCheeks.cs</LastGenOutput>
+      <DependentUpon>BootyCheeks.edmx</DependentUpon>
+    </Content>
     <Content Include="Tinker\codeGen.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>codeGen.Context.cs</LastGenOutput>
