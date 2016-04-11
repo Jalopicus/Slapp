@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Slashboard"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid x:Name="AppBarGrid">
+    
+    <Grid x:Name="AppBarGrid" >
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
@@ -18,10 +19,19 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="HeroPanel" Orientation="Vertical" Grid.Column="0">
-                
+                <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Class, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Description, Mode=TwoWay}"/>
+                <TextBlock Text="{Binding Id}"/>
+                <Button Content="HaltCatchFire" Click="Button_Click"/>
+                <Button x:Name="Up" Content="Up" Click="Nav_Click"/>
+                <Button x:Name="Down" Content="Down" Click="Nav_Click"/>
+                <Button x:Name="Save" Content="Save" Click="Save_Click"/>
+
             </StackPanel>
             <StackPanel x:Name="ZeroPanel" Orientation="Vertical" Grid.Column="1">
-                
+                <TextBox Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Id}"/>
             </StackPanel>
             <StackPanel x:Name="FearoPanel" Orientation="Vertical" Grid.Column="1">
                 
