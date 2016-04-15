@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
 namespace Datality {
     namespace ComplexTypes {
         [ComplexType]
@@ -10,9 +12,11 @@ namespace Datality {
             public string Primary { get; set; }
             public string Secondary { get; set; }
             public string PackingGroup { get; set; }
+
             /// <value>DOT, IMDG, etc</value>
-            public string Type { get; set; } 
+            public string Type { get; set; }
         }
+
         [ComplexType]
         public class Sara {
             public bool Acute { get; set; } = false;
@@ -22,12 +26,14 @@ namespace Datality {
             public bool Reactivity { get; set; } = false;
             public Sara313 Sara313 { get; set; }
         }
+
         [ComplexType]
         public class LegacyRatings {
             public LegacyRating Hmis { get; set; } = new LegacyRating();
             public LegacyRating Nfpa { get; set; } = new LegacyRating();
             public LegacyRating Whims { get; set; } = new LegacyRating();
         }
+
         [ComplexType]
         public class LegacyRating {
             public int H { get; set; } = 0;
@@ -35,6 +41,7 @@ namespace Datality {
             public int R { get; set; } = 0;
             public string Sp { get; set; } = null;
         }
+
         [ComplexType]
         public class StreetAddress {
             public string Address1 { get; set; }
@@ -44,6 +51,7 @@ namespace Datality {
             public string State { get; set; }
             public string Zip { get; set; }
         }
+
         [ComplexType]
         public class Sara313 {
             private bool Listed { get; set; } = false;
@@ -52,3 +60,21 @@ namespace Datality {
         }
     }
 }
+
+[ComplexType]
+public class Moniker {
+    public Moniker(int id, string name) {
+        Id = id;
+        Name = name;
+    }
+    public Moniker(object val) {
+        Id = (int)val.GetType().GetProperty("Id").GetValue(val, null);
+        Name = (string)val.GetType().GetProperty("Name").GetValue(val, null);
+    }
+    public int Id { get; }
+    public string Name { get; }
+}
+    
+
+
+

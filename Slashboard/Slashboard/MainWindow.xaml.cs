@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Datality;
 using Datality.Minions;
 
 namespace Slashboard {
@@ -20,28 +10,70 @@ namespace Slashboard {
     /// </summary>
     public partial class MainWindow : Window {
         public MainMinion Minion { get; set; }
+
+        public Pro Pro { get; set; }
+        public Blend Blend { get; set; }
+
         public MainWindow() {
             InitializeComponent();
             Minion = new MainMinion();
-            HeroPanel.DataContext = Minion.Pro;
+            DataContext = Minion;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            var a = 1;
-            a = 2;
-
-
+        private void NavJump(object sender, RoutedEventArgs e) {
+            var snd = (Button)sender;
+            var whichBox = (snd.Name.StartsWith("Pro", StringComparison.CurrentCulture)) ? ProCata : BlendCata;
+            var howFar = (snd.Name.EndsWith("Up", StringComparison.CurrentCulture)) ? 1 : -1;
+            whichBox.NavJump(howFar);
+            if (snd.Name.StartsWith("Pro", StringComparison.CurrentCulture)) {
+                ProCataGo_Click(ProCataGo, new RoutedEventArgs());
+            }
+            else {
+                BlendCataGo_Click(BlendCataGo, new RoutedEventArgs());
+            }
         }
-        private void Nav_Click(object sender, RoutedEventArgs e) {
-            var snd = (Button)(sender);
-            Minion.Nav(snd.Name == "Up");
-            HeroPanel.DataContext = null;
-            HeroPanel.DataContext = Minion.Pro;
-            ZeroPanel.DataContext = null;
-            ZeroPanel.DataContext = Minion.Pro.Blend;
-        }
-        private void Save_Click(object sernder, RoutedEventArgs e) {
+        private void Save_Click(object sender, RoutedEventArgs e) {
             Minion.Save();
+        }
+        private void New_Click(object sender, RoutedEventArgs e) {
+            Minion.NewPro();
+        }
+        private void NewBlend_Click(object sender, RoutedEventArgs e) {
+         //   Minion.NewBlend();
+        }
+        private void DelBlend_Click(object sender, RoutedEventArgs e) {
+           //Minion.Blend.Delete();
+        }
+        private void ProCataGo_Click(object sender, RoutedEventArgs e) {
+            if (ProCata.SelectedValue == null) return;
+            Minion.NavTo(ProCata.ToId());
+            
+        }
+        private void BlendCataGo_Click(object sender, RoutedEventArgs e) {
+            if (BlendCata.SelectedValue == null) return;
+            Minion.BlNavTo(BlendCata.ToId());
+        }
+    }
+    public static class ComboBoxExtension {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="whichCb"></param>
+        /// <param name="howMany"></param>
+        public static void NavJump(this ComboBox whichCb, int howMany) {
+            var i = whichCb.SelectedIndex;
+            var cnt = whichCb.Items.Count;
+            whichCb.SelectedIndex = (cnt > 0) ?  (i + cnt + howMany) % cnt : i;
+        }
+        /// <summary>
+        /// Returns the Id of the selected item as determined by the markup for SelectedValuePath
+        /// </summary>
+        /// <param name="whichCb">Which combobox?</param>
+        /// <returns>Integer corresponding to the Id</returns>
+        public static int ToId(this ComboBox whichCb) {
+            //what a fucking mess. go home.
+            if (!whichCb.HasItems()) return -1; //Throw???
+            var ret = (whichCb.SelectedItem) ?? whichCb.Items[0];
+            return (int)ret;
         }
     }
 }

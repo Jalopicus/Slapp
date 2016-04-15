@@ -5,38 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Slashboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    
-    <Grid x:Name="AppBarGrid" >
+        Title="MainWindow" Height="432" Width="811" DataContext="{Binding Minion, RelativeSource={RelativeSource Self}}">
+    <Grid x:Name="AppBarGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" x:Name="RootGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="HeroPanel" Orientation="Vertical" Grid.Column="0">
-                <TextBox Text="{Binding Name, Mode=TwoWay}"/>
-                <TextBox Text="{Binding Class, Mode=TwoWay}"/>
-                <TextBox Text="{Binding Description, Mode=TwoWay}"/>
-                <TextBlock Text="{Binding Id}"/>
-                <Button Content="HaltCatchFire" Click="Button_Click"/>
-                <Button x:Name="Up" Content="Up" Click="Nav_Click"/>
-                <Button x:Name="Down" Content="Down" Click="Nav_Click"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <ComboBox x:Name="ProCata" ItemsSource="{Binding ProList}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedValue="{Binding Pro.Id, Mode=OneWay}" HorizontalAlignment="Stretch"  />
+                <Button x:Name="ProCataGo" Content="OkGo" Click="ProCataGo_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                <ComboBox x:Name="BlendCata" ItemsSource="{Binding BlendList}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Blend.Name , Mode=OneWay}" HorizontalAlignment="Stretch"/>
+                <Button x:Name="BlendCataGo" Content="OkSwitch" Click="BlendCataGo_Click"/>
+            </StackPanel>
+
+            <StackPanel x:Name="HeroPanel" Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="5">
+                <TextBox Text="{Binding Pro.Name, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Pro.Class, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Pro.Description, Mode=TwoWay}"/>
+                <TextBlock Text="{Binding Pro.Id}"/>
+                <TextBlock Text="Pro.Blend"/>
+                <TextBox Text="{Binding Pro.Blend.Id}"/>
+                <TextBox Text="{Binding Pro.Blend.Name}"/>
+                <ItemsControl x:Name="Clones" ItemsSource="{Binding Blend.Pros}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button x:Name="ProUp" Content="Up" Click="NavJump"/>
+                <Button x:Name="ProDown" Content="Down" Click="NavJump"/>
                 <Button x:Name="Save" Content="Save" Click="Save_Click"/>
+                <Button x:Name="New" Content="New" Click="New_Click"/>
 
             </StackPanel>
-            <StackPanel x:Name="ZeroPanel" Orientation="Vertical" Grid.Column="1">
-                <TextBox Text="{Binding Name}"/>
-                <TextBlock Text="{Binding Id}"/>
+            <StackPanel x:Name="ZeroPanel" Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                <TextBox Text="{Binding Blend.Name}"/>
+                <TextBlock Text="{Binding Blend.Id}"/>
+                <TextBox Text="{Binding Blend.Pros}"/>
+                <Button Name="BlUp" Content="Up" Click="NavJump"/>
+                <Button Name="BlDown" Content="Down" Click="NavJump"/>
+                <Button Name ="NewBlend"  Content="New Blend" Click="NewBlend_Click"/>
+                <Button Name="DelBlend" Content="Delete" Click="DelBlend_Click"/>
             </StackPanel>
-            <StackPanel x:Name="FearoPanel" Orientation="Vertical" Grid.Column="1">
-                
+            <StackPanel x:Name="FearoPanel" Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </Window>

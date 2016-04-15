@@ -12,7 +12,8 @@
     <AssemblyName>Datality</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>8c76fb84</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +59,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PropertyChanged, Version=1.51.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.1.51.0\lib\dotnet\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -72,143 +77,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AshleyGraham.cs" />
+    <Compile Include="BallPeenHammer.cs" />
     <Compile Include="ComplexTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Minions\Extensions.cs" />
     <Compile Include="Minions\MainMinion.cs" />
-    <Compile Include="Tinker\Bass.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Blend.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\BootyCheeks.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BootyCheeks.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\BootyCheeks.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\BootyCheeks.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BootyCheeks.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Brand.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Chemical.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Formulino.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\LegacyRating.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Pro.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Raw.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Reggo.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Safety.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Sara.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\SpecSet.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\StreetAddress.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Butt.cs">
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Cheek.cs">
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\codeGen.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>codeGen.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\codeGen.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Feet.cs">
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\MirrorOrgan.cs">
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Person.cs">
-      <DependentUpon>codeGen.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Minions\Peeon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tinker\tinker.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tinker.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Toxicity.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tinker\Transport.cs">
-      <DependentUpon>BootyCheeks.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Tinker\BootyCheeks.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BootyCheeks.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Tinker\BootyCheeks.edmx.diagram">
-      <DependentUpon>BootyCheeks.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="Tinker\tinker.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>tinker.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Tinker\tinker.edmx.diagram">
-      <DependentUpon>tinker.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tinker\BootyCheeks.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BootyCheeks.Context.cs</LastGenOutput>
-      <DependentUpon>BootyCheeks.edmx</DependentUpon>
-    </Content>
-    <Content Include="Tinker\BootyCheeks.edmx.sql" />
-    <Content Include="Tinker\BootyCheeks.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BootyCheeks.cs</LastGenOutput>
-      <DependentUpon>BootyCheeks.edmx</DependentUpon>
-    </Content>
-    <Content Include="Tinker\codeGen.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>codeGen.Context.cs</LastGenOutput>
-      <DependentUpon>tinker.edmx</DependentUpon>
-    </Content>
-    <Content Include="Tinker\codeGen.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>codeGen.cs</LastGenOutput>
-      <DependentUpon>tinker.edmx</DependentUpon>
-    </Content>
-    <Content Include="Tinker\tinker.edmx.sql" />
+    <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -219,7 +102,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.0.0-beta1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.0.0-beta1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.2\build\dotnet\Fody.targets'))" />
   </Target>
+  <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
