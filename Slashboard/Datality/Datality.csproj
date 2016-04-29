@@ -78,17 +78,33 @@
   <ItemGroup>
     <Compile Include="AshleyGraham.cs" />
     <Compile Include="BallPeenHammer.cs" />
+    <Compile Include="BootyCheeks.cs" />
     <Compile Include="ComplexTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Tap.cs" />
+    <Compile Include="Minions\BaseMinion.cs" />
     <Compile Include="Minions\Extensions.cs" />
     <Compile Include="Minions\MainMinion.cs" />
     <Compile Include="Minions\Peeon.cs" />
+    <Compile Include="Minions\SaneMinion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BootyCheeks\" />
+    <Folder Include="Hackcess\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

@@ -41,17 +41,6 @@ namespace Datality {
             public int R { get; set; } = 0;
             public string Sp { get; set; } = null;
         }
-
-        [ComplexType]
-        public class StreetAddress {
-            public string Address1 { get; set; }
-            public string Address2 { get; set; }
-            public string Address3 { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string Zip { get; set; }
-        }
-
         [ComplexType]
         public class Sara313 {
             private bool Listed { get; set; } = false;

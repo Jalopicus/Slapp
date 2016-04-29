@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Slashboard.Properties {
+namespace Datality.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,19 +25,12 @@ namespace Slashboard.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Ronda Rousey\"")]
-        public string LastProFocused {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\Bwalters.COLLOID\\Desktop\\" +
+            "Live\\Product Dossier - Copy (4).accdb\"")]
+        public string Hackcess {
             get {
-                return ((string)(this["LastProFocused"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Straweight\"")]
-        public string LastChangelingFocused {
-            get {
-                return ((string)(this["LastChangelingFocused"]));
+                return ((string)(this["Hackcess"]));
             }
         }
     }

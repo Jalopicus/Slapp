@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17.875" name="LTSql">
+  <DataContextMoniker Name="/LTSqlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7170df9a-5c1f-4946-a06e-4d74b7d4a330" absoluteBounds="0.75, 1.25, 2, 16.385805664062502">
+      <DataClassMoniker Name="/LTSqlDataContext/Product_Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0fc4f570-83c0-4d79-be0f-eda98232e027" absoluteBounds="0.765, 1.71, 1.9700000000000002, 15.8258056640625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8619e48d-e195-4e97-82a5-4b45d36821d5" absoluteBounds="4.625, 0.875, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/LTSqlDataContext/Branding" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29c101c5-b2ef-41aa-9bb3-9bbd7a6e2813" absoluteBounds="4.64, 1.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8542594-0f79-4baf-a799-e9b885a9c8a3" absoluteBounds="4.625, 5.125, 2, 4.2708154296875">
+      <DataClassMoniker Name="/LTSqlDataContext/Component" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ace2b0b5-b91d-41e7-ae5a-ac9549eabd33" absoluteBounds="4.64, 5.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

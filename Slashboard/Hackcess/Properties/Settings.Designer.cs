@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Slashboard.Properties {
+namespace Hackcess.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,19 +25,23 @@ namespace Slashboard.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Ronda Rousey\"")]
-        public string LastProFocused {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\Bwalters.COLLOID\\Desktop\\" +
+            "Live\\Product Dossier - Copy (4).accdb\"")]
+        public string Product_Dossier___Copy__4_ConnectionString {
             get {
-                return ((string)(this["LastProFocused"]));
+                return ((string)(this["Product_Dossier___Copy__4_ConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Straweight\"")]
-        public string LastChangelingFocused {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BWALTERS-PC\\SQLEXPRESS;Initial Catalog=Datality;Integrated Security=T" +
+            "rue;Encrypt=False;TrustServerCertificate=True")]
+        public string DatalityConnectionString {
             get {
-                return ((string)(this["LastChangelingFocused"]));
+                return ((string)(this["DatalityConnectionString"]));
             }
         }
     }

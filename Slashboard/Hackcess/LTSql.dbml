@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Datality" Class="LTSqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BWALTERS-PC\SQLEXPRESS;Initial Catalog=Datality;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="Hackcess.Properties.Settings" SettingsPropertyName="DatalityConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Product Log]" Member="Product_Logs">
+    <Type Name="Product_Log">
+      <Column Name="PID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Product_name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="OldUN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Product_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Product_class" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Supplier_code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NSF" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Kosher" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comp1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow1" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh1" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comp2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow2" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh2" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comp3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow3" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh3" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comp4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow4" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh4" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comp5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow5" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh5" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Comp6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WeightRangeLow6" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRangeHigh6" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightRange6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="pH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Specific_gravity" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Boiling_point" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Freezing_point" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Solubility" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Vapor_density" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Vapor_pressure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Appearance" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Odor" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Flash_point" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Explosive_limits" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Autoignition_temperature" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="EPA_number" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Decomposition_temperature" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Product_RQ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Odor_threshold" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Evaporation_rate" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Partition_coefficient" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="VOC_content" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Viscosity" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HMIS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NFPA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CAS6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OSHA_PEL6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH_TLV6" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Health2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Physical2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Environmental2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="goTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Clones" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Issue_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Revision_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Branding" Member="Brandings">
+    <Type Name="Branding">
+      <Column Name="CID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier_fullname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier_address_1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier_address_2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier_address_3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier_city" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier_state" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="Supplier_zip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Supplier_phone" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier_ec" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Heading1BG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Heading1FG" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Heading1OL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Components" Member="Components">
+    <Type Name="Component">
+      <Column Name="CMPID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Substance" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="SDS_Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ListOfListsName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Aliases" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Proprietary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CAS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PEL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ACGIH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CERCLA_RQ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SARA313" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SARA302TPQ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SARA302RQ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RCRACODE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsProduct" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IARC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NTP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         xmlns:local="clr-namespace:Slashboard"
         mc:Ignorable="d"
         Title="MainWindow" Height="432" Width="811" DataContext="{Binding Minion, RelativeSource={RelativeSource Self}}">
+    
     <Grid x:Name="AppBarGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
@@ -22,24 +24,29 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <!--<StackPanel Orientation="Horizontal" Grid.Row="0">
                 <ComboBox x:Name="ProCata" ItemsSource="{Binding ProList}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedValue="{Binding Pro.Id, Mode=OneWay}" HorizontalAlignment="Stretch"  />
                 <Button x:Name="ProCataGo" Content="OkGo" Click="ProCataGo_Click"/>
+                
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                <ComboBox x:Name="BlendCata" ItemsSource="{Binding BlendList}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Blend.Name , Mode=OneWay}" HorizontalAlignment="Stretch"/>
+                <ComboBox x:Name="BlendCata" ItemsSource="{Binding Changelings}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Blend.Id , Mode=OneWay}" HorizontalAlignment="Stretch"/>
                 <Button x:Name="BlendCataGo" Content="OkSwitch" Click="BlendCataGo_Click"/>
-            </StackPanel>
+            </StackPanel>-->
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="FilterBox" Text="{Binding FilterText, Mode=TwoWay}" TextChanged="FilterBox_TextChanged" />
+                </StackPanel>
 
             <StackPanel x:Name="HeroPanel" Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="5">
-                <TextBox Text="{Binding Pro.Name, Mode=TwoWay}"/>
+                <ListBox x:Name="ListBoxx" ItemsSource="{Binding ProList}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding ProFocus, Mode=TwoWay}"/>
+                <!--<TextBox Text="{Binding Pro.Name, Mode=TwoWay}"/>
                 <TextBox Text="{Binding Pro.Class, Mode=TwoWay}"/>
                 <TextBox Text="{Binding Pro.Description, Mode=TwoWay}"/>
                 <TextBlock Text="{Binding Pro.Id}"/>
                 <TextBlock Text="Pro.Blend"/>
                 <TextBox Text="{Binding Pro.Blend.Id}"/>
                 <TextBox Text="{Binding Pro.Blend.Name}"/>
-                <ItemsControl x:Name="Clones" ItemsSource="{Binding Blend.Pros}">
+                <ItemsControl x:Name="Clones" ItemsSource="{Binding Clones}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"/>
@@ -49,19 +56,50 @@
                 <Button x:Name="ProUp" Content="Up" Click="NavJump"/>
                 <Button x:Name="ProDown" Content="Down" Click="NavJump"/>
                 <Button x:Name="Save" Content="Save" Click="Save_Click"/>
-                <Button x:Name="New" Content="New" Click="New_Click"/>
+                <Button x:Name="New" Content="New" Click="New_Click"/>-->
 
             </StackPanel>
             <StackPanel x:Name="ZeroPanel" Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                <TextBox Text="{Binding Pro.Name}"/>
+                <TextBox Text="{Binding Pro.Class}"/>
+                <TextBox Text="{Binding Pro.Description}"/>
+                <TextBox Text="{Binding Pro.Note}"/>
+                <Separator/>
+                <TextBlock Text="Clones"/>
+                <ItemsControl x:Name="Clones" ItemsSource="{Binding Clones}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Separator/>
+                <TextBlock Text="BlendId"/>
+                <TextBlock Text="{Binding Pro.BlendId}"/>
+                <TextBlock Text="BrandId"/>
+                <TextBlock Text="{Binding Pro.BrandId}"/>
+                <TextBlock Text="Changeling" FontWeight="DemiBold"/>
+                <ComboBox x:Name="Changelingss" ItemsSource="{Binding Changelings}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding BlendFocus}"/>
                 <TextBox Text="{Binding Blend.Name}"/>
-                <TextBlock Text="{Binding Blend.Id}"/>
-                <TextBox Text="{Binding Blend.Pros}"/>
-                <Button Name="BlUp" Content="Up" Click="NavJump"/>
-                <Button Name="BlDown" Content="Down" Click="NavJump"/>
-                <Button Name ="NewBlend"  Content="New Blend" Click="NewBlend_Click"/>
-                <Button Name="DelBlend" Content="Delete" Click="DelBlend_Click"/>
+                <TextBox Text="{Binding Blend.Id}"/>
+                <TextBlock Text="Tatts"/>
+                <ComboBox x:Name="Tatts" ItemsSource="{Binding Tatts}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding BrandFocus}"/>
+                
             </StackPanel>
-            <StackPanel x:Name="FearoPanel" Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+            <StackPanel x:Name="FearoPanel" Orientation="Vertical" Grid.Column="2" Grid.Row="1">
+                <TextBox Text="{Binding Formulino.Raw.Name}"/>
+                <TextBox Text="{Binding Formulino.High}"/>
+                <Button Name ="AddFormulino" Content="AddFormulino" Click="AddFormulino_Click"/>
+                <ItemsControl x:Name="Formulinoes" ItemsSource="{Binding Blend.Formulinoes}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Raw.Name}"/>
+                                <TextBlock Text="{Binding High}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </StackPanel>
         </Grid>
