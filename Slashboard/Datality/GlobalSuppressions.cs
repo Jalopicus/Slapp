@@ -5,4 +5,5 @@
 // a specific target and scoped to a namespace, type, member, etc.
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0021:Warns about calls to virtual member functions occuring in the constructor", Justification = "<Pending>", Scope = "member", Target = "~M:Datality.AshleyGraham.#ctor")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0108:Warns about static fields in generic types", Justification = "<Pending>", Scope = "member", Target = "~F:Datality.Minion`1._inventory")]
 

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
-namespace Datality {
+namespace Datality.Smashley {
     namespace ComplexTypes {
         [ComplexType]
         public class Transport {
@@ -16,7 +16,6 @@ namespace Datality {
             /// <value>DOT, IMDG, etc</value>
             public string Type { get; set; }
         }
-
         [ComplexType]
         public class Sara {
             public bool Acute { get; set; } = false;
@@ -26,14 +25,12 @@ namespace Datality {
             public bool Reactivity { get; set; } = false;
             public Sara313 Sara313 { get; set; }
         }
-
         [ComplexType]
         public class LegacyRatings {
             public LegacyRating Hmis { get; set; } = new LegacyRating();
             public LegacyRating Nfpa { get; set; } = new LegacyRating();
             public LegacyRating Whims { get; set; } = new LegacyRating();
         }
-
         [ComplexType]
         public class LegacyRating {
             public int H { get; set; } = 0;
@@ -47,23 +44,18 @@ namespace Datality {
             public long Tpq { get; set; }
             public long Rq { get; set; }
         }
+        [ComplexType]
+        public class Moniker {
+            public Moniker(int id, string name) {
+                Id = id;
+                Name = name;
+            }
+            public Moniker(object val) {
+                Id = (int)val.GetType().GetProperty("Id").GetValue(val, null);
+                Name = (string)val.GetType().GetProperty("Name").GetValue(val, null);
+            }
+            public int Id { get; }
+            public string Name { get; }
+        }
     }
 }
-
-[ComplexType]
-public class Moniker {
-    public Moniker(int id, string name) {
-        Id = id;
-        Name = name;
-    }
-    public Moniker(object val) {
-        Id = (int)val.GetType().GetProperty("Id").GetValue(val, null);
-        Name = (string)val.GetType().GetProperty("Name").GetValue(val, null);
-    }
-    public int Id { get; }
-    public string Name { get; }
-}
-    
-
-
-

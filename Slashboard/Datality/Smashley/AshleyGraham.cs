@@ -1,30 +1,18 @@
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using Datality.ComplexTypes;
-
 using PropertyChanged;
 
-namespace Datality {
+namespace Datality.Smashley {
     using ComplexTypes;
     /// <summary>
-    /// Data model
+    /// Entity Framework 6 Data model
     /// </summary>
-    public sealed partial class AshleyGraham : DbContext {
-        // Your context has been configured to use a 'AshleyGraham' connection string from your application's 
-        // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'Datality.AshleyGraham' database on your LocalDb instance. 
-        // 
-        // If you wish to target a different database and/or database provider, modify the 'AshleyGraham' 
-        // connection string in the application configuration file.
+    public sealed class AshleyGraham : DbContext {
         public AshleyGraham() : base("name=AshleyGraham") {
-            //Wipes database if model changes, suppresses errors nobody asks for
             Pros = Set<Pro>();
             Raws = Set<Raw>();
             Blends = Set<Blend>();
@@ -33,7 +21,6 @@ namespace Datality {
             SpecSets = Set<SpecSet>();
             Safeties = Set<Safety>();
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AshleyGraham>());
-            //Lazy loading is messing me all up
             this.Configuration.LazyLoadingEnabled = true;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
@@ -50,17 +37,7 @@ namespace Datality {
             });
             base.OnModelCreating(modelBuilder);
         }
-        protected override void Dispose(bool disposing) {
-            //var fm = Formulinoes.Where(x => x.BlendId == null);
-            //foreach (var f in fm) {
-            //    Entry(f).State = EntityState.Deleted;
-            //}
-            //SaveChanges();
-            base.Dispose(disposing);
-        }
-        // Add a DbSet for each entity type that you want to include in your model. For more information 
-        // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        protected override void Dispose(bool disposing) { base.Dispose(disposing); }
         public DbSet<Pro> Pros { get; set; }
         public DbSet<Raw> Raws { get; set; }
         public DbSet<Formulino> Formulinoes { get; set; }
@@ -72,27 +49,28 @@ namespace Datality {
     }
     /// <summary>
     /// Tables/sets will inherit this base class
-    /// 
     /// </summary>
     [ImplementPropertyChanged]
     public abstract class Bass {
-        //protected Bass() {
-        //     Created = DateTime.Now;
-        // }
+        protected Bass() {
+             Created = DateTime.Now;
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        //public DateTime? Created { get; set; }
-        //public DateTime? Modified { get; set; }
+        public DateTime? Created { get; set; }
+        public DateTime? Modified { get; set; }
         public string Note { get; set; }
     }
     [ImplementPropertyChanged]
-    public abstract class Chemical : Bass {
+    public abstract class Chemical : Bass, IVoyeur {
         [Index(IsUnique = true)]
         [StringLength(450)]
         public string Name { get; set; }
         public virtual Reggo Reg { get; set; }
         public virtual ICollection<Toxicity> Toxicities { get; set; }
+        [NotMapped]
+        public virtual Thing Thing => new Thing (this.Id, this.Name);
     }
     /// <summary>
     /// Raw material
@@ -100,15 +78,13 @@ namespace Datality {
     [ImplementPropertyChanged]
     public class Raw : Chemical { 
         public string StockConcentration { get; set; }
-        //[Index(IsUnique = true)]
-        //[StringLength(450)]
         public string Cas { get; set; }
         [InverseProperty("Raw")]
         public virtual ICollection<Formulino> Formulinoes { get; set; }
       //  public virtual ICollection<Toxicity> Toxicities { get; set; }
     }
     /// <summary>
-    /// Combination of raw materials
+    /// Blend formed by combinging Raw Material(s)
     /// </summary>
     [ImplementPropertyChanged]
     public class Blend : Chemical {
@@ -122,8 +98,11 @@ namespace Datality {
         //[InverseProperty("Blends")]
         //public virtual ICollection<Toxicity> Toxicities { get; set; }
     }
+    /// <summary>
+    /// A chemical composition unit
+    /// </summary>
     [ImplementPropertyChanged]
-    public class Formulino : Bass {
+    public class Formulino : Bass, IVoyeur {
         public float Low { get; set; }
         public float High { get; set; }
         public float Actual { get; set; }
@@ -136,12 +115,15 @@ namespace Datality {
         public virtual Raw Raw { get; set; }
         [Index("BlendRaw", 2, IsUnique = true)]
         public int? RawId { get; set; }
+
+        [NotMapped]
+        public virtual Thing Thing => new Thing (this.Id, this.Raw.Name);
     }
     /// <summary>
     /// Aliasing and branding of a blend
     /// </summary>
     [ImplementPropertyChanged]
-    public class Pro : Bass {
+    public class Pro : Bass, IVoyeur {
         [Index(IsUnique = true)]
         [StringLength(450)]
         public string Name { get; set; }
@@ -156,6 +138,9 @@ namespace Datality {
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
         public int? BrandId { get; set; }
+
+        [NotMapped]
+        public virtual Thing Thing => new Thing (this.Id, this.Name );
     }
     [ImplementPropertyChanged]
     public class SpecSet : Bass {
@@ -173,7 +158,8 @@ namespace Datality {
     /// Toxicity entities
     /// </summary>
     [ImplementPropertyChanged]
-    public class Toxicity : Bass {
+    public class Toxicity : Bass, IVoyeur {
+        public string Name { get; set; }
         public int? SubSort { get; set; } = 0;
         public int? SpecimenType { get; set; } = 0;
         public string TestConcentration { get; set; }
@@ -186,9 +172,12 @@ namespace Datality {
         public virtual ICollection<Raw> Raws { get; set; }
         //[InverseProperty("Toxicities")]
         public virtual ICollection<Blend> Blends { get; set; }
+
+        [NotMapped]
+        public virtual Thing Thing => new Thing(this.Id, this.Name);
     }
     [ImplementPropertyChanged]
-    public class Brand : Bass {
+    public class Brand : Bass, IVoyeur {
         [Index(IsUnique = true)]
         [StringLength(450)]
         public string Name { get; set; }
@@ -209,6 +198,9 @@ namespace Datality {
         public int? Heading1Ol { get; set; }
         [InverseProperty("Brand")]
         public virtual ICollection<Pro> Pros { get; set; }
+
+        [NotMapped]
+        public virtual Thing Thing => new Thing (this.Id, this.Name );
     }
     /// <summary>
     /// Regulation lists 

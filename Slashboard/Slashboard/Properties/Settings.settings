@@ -1,12 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Slashboard.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="LastProFocused" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">"Ronda Rousey"</Value>
-    </Setting>
-    <Setting Name="LastChangelingFocused" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">"Straweight"</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

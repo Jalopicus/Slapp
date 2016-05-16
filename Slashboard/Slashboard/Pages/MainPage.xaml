@@ -1,0 +1,18 @@
+﻿<Page x:Class="Slashboard.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="MainPage" ShowsNavigationUI="False"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}" Loaded="Page_Loaded" >
+    <Grid x:Name="Root" DataContext="{Binding Overlord}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="LootTable" Grid.Column="0" DataContext="{Binding Ops, UpdateSourceTrigger=PropertyChanged}">
+            <TextBlock x:Name="ProTb" Text="{Binding FocusIndex, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+            <ListBox ItemsSource="{Binding Minion.Inventory}" SelectedValue="{Binding FocusIndex}" 
+                     DisplayMemberPath="Text" SelectedValuePath="Number"  Background="Aqua"/>
+        </StackPanel>
+        <StackPanel x:Name="LootWindow" Grid.Column="1" DataContext="{Binding Ops.Minion.LootItem, Mode=TwoWay}">
+            <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+        </StackPanel>
+    </Grid>
+</Page>

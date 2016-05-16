@@ -102,11 +102,17 @@
     <Compile Include="TestivalofLights.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Haccess.cs" />
+    <Compile Include="Hexagram.cs" />
+    <Compile Include="TerrESTrial.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datality\Datality.csproj">
       <Project>{7434693e-e4d8-4d3f-8df4-ce6e68f37c94}</Project>
       <Name>Datality</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Slashboard\Slashboard.csproj">
+      <Project>{a54d7b2b-3227-4a5d-ba2d-3f87d10be96f}</Project>
+      <Name>Slashboard</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

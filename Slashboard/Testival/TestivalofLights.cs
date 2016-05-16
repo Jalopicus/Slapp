@@ -5,20 +5,21 @@ using System.Data;
 using System.Linq;
 using Datality;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Datality.Minions;
+
 //using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.Entity;
 using System.Diagnostics;
-
+using Datality.Smashley;
+using Datality.Smashley.Extensions;
 namespace Testival {
     [TestClass]
     public class TestivalofLights {
         private static string _connectionString = "data source=(LocalDb)\\MSSQLLocalDB;initial catalog = Datality.AshleyGraham; integrated security = True; MultipleActiveResultSets=True;App=EntityFramework";
-        static string _connectionString_testdb =
-            "Data Source=BWALTERS-PC\\SQLEXPRESS;Initial Catalog=AshleyGrahamTest;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        static string _liteString = "Data Source=BootyCheeks.sqlite";
+        //static string _connectionString_testdb =
+        //    "Data Source=BWALTERS-PC\\SQLEXPRESS;Initial Catalog=AshleyGrahamTest;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //static string _liteString = "Data Source=BootyCheeks.sqlite";
 
         [TestMethod]
         public void ScrapLoad() {

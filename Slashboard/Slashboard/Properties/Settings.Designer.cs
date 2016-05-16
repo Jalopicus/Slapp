@@ -22,23 +22,5 @@ namespace Slashboard.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Ronda Rousey\"")]
-        public string LastProFocused {
-            get {
-                return ((string)(this["LastProFocused"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"Straweight\"")]
-        public string LastChangelingFocused {
-            get {
-                return ((string)(this["LastChangelingFocused"]));
-            }
-        }
     }
 }

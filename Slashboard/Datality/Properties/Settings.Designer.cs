@@ -33,5 +33,29 @@ namespace Datality.Properties {
                 return ((string)(this["Hackcess"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int LastPro {
+            get {
+                return ((int)(this["LastPro"]));
+            }
+            set {
+                this["LastPro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int LastBrand {
+            get {
+                return ((int)(this["LastBrand"]));
+            }
+            set {
+                this["LastBrand"] = value;
+            }
+        }
     }
 }
