@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Datality.Hexicon.enums;
-
+using Datality.Smashley;
 namespace Datality.Hexicon {
     public class HexaGraham : DbContext {
         public DbSet<Hazard> Hazards { get; set; }
@@ -17,18 +17,15 @@ namespace Datality.Hexicon {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<Hazard>()
-                .HasMany<CounterHazard>(a => a.Counters)
-                .WithMany(b => b.Hazzes)
-                .Map(mp => {
-                    mp.MapLeftKey("HazKey");
-                    mp.MapRightKey("CounterKey");
-                    mp.ToTable("HazCounterHaz");
-                });
+            modelBuilder.Entity<Hazard>().HasMany<CounterHazard>(a => a.Counters).WithMany(b => b.Hazzes).Map(mp => {
+                mp.MapLeftKey("HazKey");
+                mp.MapRightKey("CounterKey");
+                mp.ToTable("HazCounterHaz");
+            });
             base.OnModelCreating(modelBuilder);
         }
     }
-    public class Hazard : IStalker, IDumpable {
+    public class Hazard : IStalker, IVoyeur {
         [Key]
         public int Key { get; set; }
         /// <summary>
@@ -47,16 +44,16 @@ namespace Datality.Hexicon {
         /// Language-defining categorization
         /// </summary>
         public string Category { get; set; }
-        
+
         public Pictogram Pictogram { get; set; }
         public SignalWord SignalWord { get; set; }
         public string Statement { get; set; }
         [InverseProperty("Hazzes")]
         public virtual ICollection<CounterHazard> Counters { get; set; }
 
-        public virtual Thing Thing => new Thing (this.Id, this.Class + this.Category);
+        public virtual Thing Thing => new Thing(this.Id, this.Class + this.Category);
     }
-    public class CounterHazard : IStalker, IDumpable {
+    public class CounterHazard : IStalker, IVoyeur {
         [Key]
         public int Key { get; set; }
         /// <summary>
@@ -74,7 +71,7 @@ namespace Datality.Hexicon {
         [InverseProperty("Counters")]
         public virtual ICollection<Hazard> Hazzes { get; set; }
 
-        public virtual Thing Thing => new Thing ( this.Id, this.Statement );
+        public virtual Thing Thing => new Thing(this.Id, this.Statement);
     }
     namespace enums {
         public enum SignalWord {
@@ -103,11 +100,5 @@ namespace Datality.Hexicon {
             Disposal = 5,
             Additional = 6
         }
-    }
-    /// <summary>
-    /// Object can be dumped to the a debug window
-    /// </summary>
-    public interface IDumpable {
-        int Key { get; set; }
     }
 }

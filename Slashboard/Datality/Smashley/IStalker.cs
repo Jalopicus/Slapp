@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Datality {
+﻿namespace Datality.Smashley {
     /// <summary>
     /// Stalker interface is for the EF that holds static data in HexaGraham
     /// </summary>
+    /// TODO: Scrap on hexagram integration
     internal interface IStalker {
         Thing Thing { get; }
     }

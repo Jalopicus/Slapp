@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Datality.Smashley;
+using System.Reflection;
 using PropertyChanged;
-
-namespace Datality {
+namespace Datality.Smashley {
     /// <summary>
     /// Minions splay out properties and handle internal logistics for a given entity class
     /// </summary>
@@ -19,7 +18,7 @@ namespace Datality {
         /// </summary>
         /// <param name="id">Integer id to search for (usually primary key)</param>
         /// <returns></returns>
-        void Fetch(int id);
+        void Fetch(int? id);
         /// <summary>
         /// Save changes to an object's appropriate Set of Ts
         /// </summary>
@@ -43,27 +42,28 @@ namespace Datality {
         public Minion() {
             _lootItem = new T();
             LootSwap?.Invoke(this, new PropertyChangedEventArgs("LootItem"));
-        }
-        static Minion() {
             using (var ag = new AshleyGraham()) {
-                _inventory = ag.Set<T>().AsEnumerable().Select(x => x.Thing).ToList<Thing>();
+                _inventory = ag.Set<T>().AsEnumerable().Select(x => x.Thing).OrderBy(x=>x.Text).ToList<Thing>();
             }
         }
         public event PropertyChangedEventHandler LootSwap;
 
-        private static readonly ICollection<Thing> _inventory;
-        public ICollection<Thing> Inventory => _inventory;
-        private T _lootItem;
+        public List<Thing> Inventory() {
+            return _inventory;
+        }
+        private readonly List<Thing> _inventory;
         public T LootItem {
             get { return _lootItem; }
             set { _lootItem = value; LootSwap?.Invoke(this, new PropertyChangedEventArgs("LootItem")); }
         }
+        private T _lootItem;
         /// <summary>
         /// Repository retrieval by primary key
         /// </summary>
         /// <param name="id">Primary key</param>
         /// <returns>An object T matching the primary key. Use of the .Find() method allegedly checks the .Local before retrieving from the repository.</returns>
-        public void Fetch(int id) {
+        public void Fetch(int? id) {
+            if (id == null) return;
             using (var ag = new AshleyGraham()) {
                 _lootItem = ag.Set<T>().Find(id);
                 LootSwap?.Invoke(this, new PropertyChangedEventArgs("LootItem"));

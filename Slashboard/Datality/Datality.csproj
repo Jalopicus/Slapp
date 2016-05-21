@@ -78,7 +78,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IStalker.cs" />
+    <Compile Include="Overlords\AlphaOverlord.cs" />
+    <Compile Include="Overlords\SupremeOverlord.cs" />
+    <Compile Include="ResearchLab\defaultFields.Designer.cs">
+      <DependentUpon>defaultFields.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ResearchLab\Mutant.cs" />
+    <Compile Include="ResearchLab\Rampage.cs" />
+    <Compile Include="Smashley\IStalker.cs" />
     <Compile Include="Overlords\Interfaces.cs" />
     <Compile Include="Overlords\ElderOverlord.cs" />
     <Compile Include="Overlords\Ops.cs" />
@@ -93,8 +102,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Pictograms.resx</DependentUpon>
     </Compile>
-    <Compile Include="IMinion.cs" />
-    <Compile Include="IVoyeur.cs" />
+    <Compile Include="Smashley\IMinion.cs" />
+    <Compile Include="Smashley\IVoyeur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,6 +112,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ResearchLab\defaultFields.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>defaultFields.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaticResources\Pictograms.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Pictograms.Designer.cs</LastGenOutput>
@@ -138,9 +153,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.0.0-beta1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.0.0-beta1\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.2\build\dotnet\Fody.targets'))" />
   </Target>
-  <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
+  <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

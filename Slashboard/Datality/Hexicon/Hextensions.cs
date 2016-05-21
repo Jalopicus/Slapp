@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-
+using Datality.Smashley;
 namespace Datality.Hexicon {
     /// <summary>
     /// Extensions for HexaGraham classes
@@ -11,9 +11,16 @@ namespace Datality.Hexicon {
             var ret = Regex.Replace(thus, find, "");
             return ret;
         }
-        public static void DumpToDebug<T>(this T thus) where T : class, IDumpable {
+        public static void DumpToDebug<T>(this T thus) where T : class, IVoyeur {
             var props = thus.GetType().GetProperties();
-            var builder = props.Aggregate("", (current, p) => current + (p.GetValue(thus) + "    "));
+            var builder = "";
+            foreach (var prop in props)
+                try {
+                    builder = builder + (prop?.GetValue(thus) + "    ");
+                }
+                catch {
+                    builder = builder + prop?.Name + " crapped out.   ";
+                }
             Debug.WriteLine(builder);
         }
     }

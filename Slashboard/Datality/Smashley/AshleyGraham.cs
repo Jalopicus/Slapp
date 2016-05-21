@@ -18,8 +18,6 @@ namespace Datality.Smashley {
             Blends = Set<Blend>();
             Brands = Set<Brand>();
             Toxicities = Set<Toxicity>();
-            SpecSets = Set<SpecSet>();
-            Safeties = Set<Safety>();
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AshleyGraham>());
             this.Configuration.LazyLoadingEnabled = true;
         }
@@ -44,8 +42,6 @@ namespace Datality.Smashley {
         public DbSet<Blend> Blends { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Toxicity> Toxicities { get; set; }
-        public DbSet<SpecSet> SpecSets { get; set; }
-        public DbSet<Safety> Safeties { get; set; }
     }
     /// <summary>
     /// Tables/sets will inherit this base class
@@ -67,8 +63,7 @@ namespace Datality.Smashley {
         [Index(IsUnique = true)]
         [StringLength(450)]
         public string Name { get; set; }
-        public virtual Reggo Reg { get; set; }
-        public virtual ICollection<Toxicity> Toxicities { get; set; }
+       public virtual ICollection<Toxicity> Toxicities { get; set; }
         [NotMapped]
         public virtual Thing Thing => new Thing (this.Id, this.Name);
     }
@@ -88,8 +83,25 @@ namespace Datality.Smashley {
     /// </summary>
     [ImplementPropertyChanged]
     public class Blend : Chemical {
-        public SpecSet SpecSet { get; set; }
-        public virtual Safety Safety { get; set; }
+        public string Ph { get; set; }
+        public string Appearance { get; set; }
+        public string Odor { get; set; }
+        public string SpecificGravity { get; set; }
+        public string BoilingPoint { get; set; }
+        public string FreezingPoint { get; set; }
+        public string Solubility { get; set; }
+        public string VaporDensity { get; set; }
+        public string VaporPressure { get; set; }
+        public string FlashPoint { get; set; }
+        public string ExplosiveLimits { get; set; }
+        public string AutoignitionTemperature { get; set; }
+        public string DecompositionTemperature { get; set; }
+        public string OdorThreshold { get; set; }
+        public string EvaporationRate { get; set; }
+        public string PartitionCoefficient { get; set; }
+        public string VocContent { get; set; }
+        public string Viscosity { get; set; }
+        //safety 
         //public Transport Transport { get; set; }
         [InverseProperty("Blend")]
         public virtual ICollection<Pro> Pros { get; set; }
@@ -143,14 +155,6 @@ namespace Datality.Smashley {
         public virtual Thing Thing => new Thing (this.Id, this.Name );
     }
     [ImplementPropertyChanged]
-    public class SpecSet : Bass {
-        //
-    }
-    [ImplementPropertyChanged]
-    public class Safety : Bass {
-        //Stree
-    }
-    [ImplementPropertyChanged]
     public class BulletinText {
         //?
     }
@@ -202,17 +206,5 @@ namespace Datality.Smashley {
         [NotMapped]
         public virtual Thing Thing => new Thing (this.Id, this.Name );
     }
-    /// <summary>
-    /// Regulation lists 
-    /// </summary>
-    [ImplementPropertyChanged]
-    public class Reggo : Bass {
-        public long Cercla { get; set; }
-        public string Epa { get; set; }
-        public bool Nsf { get; set; } = false;
-        public bool Kosher { get; set; } = false;
-        public bool Fda { get; set; } = false;
-        public Sara Sara { get; set; }
-        public LegacyRatings LegacyRatings { get; set; }
-    }
+
 }

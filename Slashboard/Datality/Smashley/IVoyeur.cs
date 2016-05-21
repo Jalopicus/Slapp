@@ -1,7 +1,7 @@
-﻿namespace Datality {
+﻿namespace Datality.Smashley {
     /// <summary>
     /// Object has a number and string designated to represent it in a list control
-    /// <seealso cref="Datality.Thing"/>
+    /// <seealso cref="Smashley.Thing"/>
     /// </summary>
     public interface IVoyeur {
         Thing Thing { get; }

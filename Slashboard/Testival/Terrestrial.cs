@@ -1,6 +1,7 @@
 ﻿using Datality.Hexicon;
 using Datality.Smashley;
 using Datality.Overlords;
+using Datality.ResearchLab;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testival {
@@ -20,8 +21,23 @@ namespace Testival {
             Assert.IsNotNull(p.Ops.FocusIndex);
         }
         [TestMethod]
-        public void ConstructorSabotage() {
-            var f = new ElderOverlord<Formulino>();
+        public void SplayBecauseIdgaf() {
+            var nm = new Minion<Pro>();
+            nm.Fetch(1);
+
+        }
+       [TestMethod]
+        public void Abominate() {
+            var x = new Mutant(1);
+            x.Replicate();
+            x.Mutate(2);
+            x.Replicate();
+            x.Mutate(3);
+        }
+        [TestMethod]
+        public void Alpha() {
+            var alph = new AlphaOverlord();
+            alph.FocusIndex = 1;
         }
     }
 }

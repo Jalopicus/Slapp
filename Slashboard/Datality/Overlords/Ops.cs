@@ -1,7 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using PropertyChanged;
-
+using System.Linq;
+using Datality.Smashley;
 namespace Datality.Overlords {
     /// <summary>
     /// Ops are performed by Minions as orchestrated by Overlords
@@ -28,7 +30,7 @@ namespace Datality.Overlords {
             }
         }
         private int _focusIndex;
-        public ObservableCollection<Thing> Inventory => new ObservableCollection<Thing>(Minion.Inventory);
+        //public ObservableCollection<Thing> Inventory => new ObservableCollection<Thing>(Minion.Inventory());
         public void Deploy(int assignment) {
             Minion.Fetch(assignment);
         }

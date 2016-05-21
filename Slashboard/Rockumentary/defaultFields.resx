@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Advice_on_safe_handling" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Autoignition_temperature" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Bioaccumulative_potential" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Boiling_point" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Carcinogenicity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Chemical_stability" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Chronic" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Conditions_to_avoid" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Contains" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Decomposition_temperature" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Disposal" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="DOT" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="DOT_label" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Embryotoxicity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Engineering_controls" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="EPA_number" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Evaporation_rate" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Explosive_limits" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Eye_contact" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Eye_face_protection" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="FA_eye_contact" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="FA_ingestion" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="FA_inhalation" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="FA_skin_contact" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Flash_point" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Freezing_point" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="General_hygiene_considerations" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Hazardous_combustion_products" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Hazardous_polymerization" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Hazard_classification" xml:space="preserve">
+    <value>No information available</value>
+    <comment>Not hazardous</comment>
+  </data>
+  <data name="Hazard_classification1" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Hazard_statement" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Incompatibilities" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Ingestion" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Inhalation" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Large_spills" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Likely_routes_of_exposure" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Mobility" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Mutagenicity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Note_to_HCP" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Odor" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Odor_threshold" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Packing_group" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Partition_coefficient" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Persistence" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Personal_precautions" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="pH" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Precautions_for_firefighters" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Pre_disposal" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Pre_prevention" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Pre_response" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Pre_storage" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Primary_haz" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Product_class" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Product_description" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Product_name" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Proper_shipping_name" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="RCRA_status" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Reproductive_effects" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Respiratory_protection" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Secondary_haz" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Sensitization_to_product" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Signal_word" xml:space="preserve">
+    <value>None</value>
+    <comment>None</comment>
+  </data>
+  <data name="Skin_contact" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Skin_protection" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Small_spills" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Solubility" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Specific_gravity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Specific_hazards" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Storage_conditions" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Suitable_extinguishing_media" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Suitable_materials_of_construction" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Supplier_address" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Supplier_ec" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Supplier_phone" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Synergistic_products" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Teratogenicity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="TSCA" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Unsuitable_extinguishing_media" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Unsuitable_materials_of_construction" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="UN_number" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="Vapor_density" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Vapor_pressure" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Viscosity" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="VOC_content" xml:space="preserve">
+    <value>No information available</value>
+  </data>
+  <data name="Comp1_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Comp2_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Comp3_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Comp4_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Comp5_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Comp6_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Hazardous_decomposition_products" xml:space="preserve">
+    <value>No known non-thermal decomposition hazards</value>
+  </data>
+  <data name="Product_RQ" xml:space="preserve">
+    <value>None</value>
+  </data>
+</root>

@@ -1,18 +1,73 @@
-﻿<Page x:Class="Slashboard.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="MainPage" ShowsNavigationUI="False"
+﻿<Page x:Name="page" x:Class="Slashboard.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mods="clr-namespace:Slashboard.Mods"
+      xmlns:met="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:local="clr-namespace:Slashboard"
+      xmlns:ovi="clr-namespace:Datality.Overlords;assembly=Datality"
+      Title="MainPage" ShowsNavigationUI="False"
       DataContext="{Binding RelativeSource={RelativeSource Self}}" Loaded="Page_Loaded" >
     <Grid x:Name="Root" DataContext="{Binding Overlord}">
+        <Grid.Resources>
+            <local:HideNullConverter x:Key="HideNull" />
+            <ovi:AlphaOverlord x:Key="Overlord" x:Name="Overlord"/>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="LootTable" Grid.Column="0" DataContext="{Binding Ops, UpdateSourceTrigger=PropertyChanged}">
-            <TextBlock x:Name="ProTb" Text="{Binding FocusIndex, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
-            <ListBox ItemsSource="{Binding Minion.Inventory}" SelectedValue="{Binding FocusIndex}" 
+        <StackPanel x:Name="OverlordStack" Grid.Column="0" DataContext="{Binding}">
+            <ComboBox x:Name="InventoryCb" ItemsSource="{Binding Inventory}" SelectedValue="{Binding FocusIndex}" 
                      DisplayMemberPath="Text" SelectedValuePath="Number"  Background="Aqua"/>
+            <StackPanel x:Name="ProStack" DataContext="{Binding ProOps.Minion, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox Text="{Binding Name}" Visibility="{Binding Name, Converter={StaticResource HideNull}}"/>
+                <TextBox Text="{Binding Description}" Visibility="{Binding Description, Converter={StaticResource HideNull}}"/>
+                <TextBox Text="{Binding Class}" Visibility="{Binding Class,Converter={StaticResource HideNull}}"/>
+            </StackPanel>
+            <Button Content="Clones" IsEnabled="True" Click="Button_Click"/>
+            <ItemsControl x:Name="ClonesLv" ItemsSource="{Binding Clones}" DisplayMemberPath="Text"/>
+            <StackPanel x:Name="BrandStack" DataContext="{Binding Path=BrandMinion.LootItem, Mode=TwoWay}">
+                <TextBlock Text="{Binding FullName}" />
+                <TextBlock Text="{Binding Address1}" Visibility="{Binding Address1, Converter={StaticResource HideNull}}"/>
+                <TextBlock Text="{Binding Address2}" Visibility="{Binding Address2, Converter={StaticResource HideNull}}"/>
+                <TextBlock Text="{Binding Address3}" Visibility="{Binding Address3, Converter={StaticResource HideNull}}"/>
+                <TextBlock Text="{Binding CityStateZip, Mode=OneWay, Source={StaticResource Overlord}}" 
+                           Visibility="{Binding CityStateZip, Source={StaticResource Overlord}, Converter={StaticResource HideNull}}"/>
+                <TextBlock Text="{Binding Website}" Visibility="{Binding Website, Converter={StaticResource HideNull} }"/>
+                <TextBlock Text="{Binding EmergencyContact}"  Visibility="{Binding EmergencyContact, Converter={StaticResource HideNull} }"/>
+                <TextBlock Text="{Binding Contact}" Visibility="{Binding Contact, Converter={StaticResource HideNull} }"/>
+                <TextBlock Text="{Binding Email}"  Visibility="{Binding Email, Converter={StaticResource HideNull} }"/>
+            </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="LootWindow" Grid.Column="1" DataContext="{Binding Ops.Minion.LootItem, Mode=TwoWay}">
-            <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" DataContext="{Binding}">
+            <met:SplitButton  x:Name="DropDownButt" ItemsSource="{Binding SpecList, Source={StaticResource Overlord}}" 
+                     DisplayMemberPath="Text" SelectionChanged="SplitButt_SelectionChanged"/>
+                
+
+
+            <!--<ListBox x:Name="SpecListLb" ItemsSource="{Binding SpecList}" 
+                     SelectionMode="Multiple" SelectedValuePath="Number" DisplayMemberPath="Text"/>-->
+            <StackPanel x:Name="BlendStack" DataContext="{Binding BlendMinion.LootItem, Mode=TwoWay}">
+                <mods:Fielder x:Name="Ph" Label="pH" Val="{Binding Ph}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="Appearance" Label="Appearance" Val="{Binding Appearance}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="Odor" Label="Odor" Val="{Binding Odor}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="SpecificGravity" Label="Specific Gravity" Val="{Binding SpecificGravity}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="BoilingPoint" Label="Boiling Point" Val="{Binding BoilingPoint}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="FreezingPoint" Label="Freezing Point" Val="{Binding FreezingPoint}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="Solubility" Label="Solubility" Val="{Binding Solubility}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="VaporDensity" Label="Vapor Density" Val="{Binding VaporDensity}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="VaporPressure" Label="Vapor Pressure" Val="{Binding VaporPressure}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="FlashPoint" Label="Flash Point" Val="{Binding FlashPoint}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="ExplosiveLimits" Label="Explosive Limits" Val="{Binding ExplosiveLimits}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="AutoignitionTemperature" Label="Autoignition Temperature" Val="{Binding AutoignitionTemperature}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="DecompositionTemperature" Label="Decomposition Temperature" Val="{Binding DecompositionTemperature}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="OdorThreshold" Label="Odor Threshold" Val="{Binding OdorThreshold}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="EvaporationRate" Label="Evaporation Rate" Val="{Binding EvaporationRate}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="PartitionCoefficient" Label="PartitionCoefficient" Val="{Binding PartitionCoefficient}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="VocContent" Label="Voc Content" Val="{Binding VocContent}" GotCleared="HandleCleared"/>
+                <mods:Fielder x:Name="Viscosity" Label="Viscosity" Val="{Binding Viscosity}" GotCleared="HandleCleared"/>
+            </StackPanel>
         </StackPanel>
+
     </Grid>
 </Page>

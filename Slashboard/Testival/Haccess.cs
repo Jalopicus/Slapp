@@ -20,7 +20,7 @@ namespace Testival {
                 ag.Database.Delete();
                 ag.Database.CreateIfNotExists();
             }
-            string[] hacks = { "Datality_Brands", "Datality_Raws", "Datality_Pros", "Datality_Toxicities" };
+            string[] hacks = { "Datality_Blends", "Datality_Brands", "Datality_Pros", "Datality_Toxicities" };
             foreach (var hack in hacks) {
                 var hacky = hack.Split("_"[0])[1];
                 using (var x = new OleDbConnection(_HackCess_String)) {
@@ -76,10 +76,12 @@ namespace Testival {
                 var bcount = ag.Brands.Count();
                 var rcount = ag.Raws.Count();
                 var tcount = ag.Toxicities.Count();
+                var blcount = ag.Blends.Count();
                 Assert.AreNotEqual(0, pcount);
                 Assert.AreNotEqual(0, bcount);
                 Assert.AreNotEqual(0, rcount);
                 Assert.AreNotEqual(0, tcount);
+                Assert.AreNotEqual(0, blcount);
 
                 var x = ag.Pros.FirstOrDefault(p => p.Name == "Citric acid");
                 Assert.IsNotNull(x);

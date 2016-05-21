@@ -57,5 +57,16 @@ namespace Datality.Smashley {
             public int Id { get; }
             public string Name { get; }
         }
+        [ComplexType]
+        public class Reggo {
+            public long Cercla { get; set; }
+            public string Epa { get; set; }
+            public bool Nsf { get; set; } = false;
+            public bool Kosher { get; set; } = false;
+            public bool Fda { get; set; } = false;
+            public Sara Sara { get; set; }
+            public LegacyRatings LegacyRatings { get; set; }
+        }
+
     }
 }

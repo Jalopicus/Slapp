@@ -51,6 +51,21 @@ namespace Datality.Smashley {
                 p.BlendId = b.Id;
                 p.Blend = b;
             }
+            /// <summary>
+            /// TODO: No actual clones exist by default data tap
+            /// </summary>
+            /// <param name="p"></param>
+            /// <returns></returns>
+            public static List<Thing> HasTheseClones(this Pro p) {
+                var list = new List<Thing>();
+                using (var ag = new AshleyGraham()) {
+                    list = ag.Pros.Where(x => x.BlendId == p.BlendId )
+                        .AsEnumerable()
+                        .Select(y => y.Thing).OrderBy(x=>x.Text)
+                        .ToList();
+                }
+                return list;
+            }
             public static void IsChangelingTo(this Blend b, Pro p) {
                 if (p == null | b == null) return;
                 p.BlendId = b.Id;
@@ -71,6 +86,11 @@ namespace Datality.Smashley {
                 if (p == null) return;
                 p.Brand = b;
                 p.BrandId = b.Id;
+            }
+            public static string CityStateZip(this Brand b) {
+                string[] cs = {b.City, b.State};
+                var ret = String.Join(", ", cs) + " " + b.Zip;
+                return ret;
             }
         }
     }
